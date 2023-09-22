@@ -1,0 +1,21 @@
+﻿
+@inherits LayoutComponentBase
+<MudThemeProvider @bind-IsDarkMode="_darkMode" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+@* <CultureSelector/>
+
+<DarkModeToggle  @bind-IsDarkMode="_darkMode" ></DarkModeToggle> *@
+
+@Body
+
+@code {
+    private bool _darkMode;
+    protected override void OnInitialized()
+    {
+        var test = "";
+        base.OnInitialized();
+    }
+
+}
