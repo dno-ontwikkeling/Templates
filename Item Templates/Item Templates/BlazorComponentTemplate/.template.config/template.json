@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Me",
+  "classifications": [ "Blazor", "Component", "Code" ],
+  "identity": "BlazorFullComponent",
+  "name": "Full blazor component",
+  "shortName": "BlazorComponent",
+  "tags": {
+    "language": "C#",
+    "type": "item"
+  },
+  "symbols": {
+    "ClassName": {
+      "type": "parameter",
+      "description": "The name of the class.",
+      "datatype": "text",
+      "replaces": "BlazorComponentTemplate",
+      "fileRename": "BlazorComponentTemplate",
+      "defaultValue": "BlazorComponentTemplate"
+    }
+  }
+}

@@ -7,8 +7,8 @@
         "Blazor"
     ],
     "name": "Custom project template",
-    "identity": "CustomTemplate",
-    "shortName": "CustomTemplate",
+    "identity": "CustomSlnTemplate",
+    "shortName": "CustomSlnTemplate",
     "tags": {
         "language": "C#",
         "type":"solution"
