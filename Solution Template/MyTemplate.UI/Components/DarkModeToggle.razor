@@ -1,4 +1,17 @@
-﻿<MudToggleIconButton @bind-Toggled="@IsDarkMode" @bind-Toggled:after="@IsDarkModeChangedTrigger"
-                     Icon="@Icons.Material.Filled.LightMode" Size="Size.Large" Color="@Color.Warning" Title="Off"
-                     ToggledIcon="@Icons.Material.Filled.DarkMode" ToggledSize="Size.Large" ToggledColor="@Color.Dark" ToggledTitle="On" />
+﻿@using MyTemplate.UI.tmp
+@using Radzen.Blazor
+@using MyTemplate.UI.Services
+@attribute [RenderModeInteractiveServer]
 
+@inject ThemeService ThemeService
+@inherits ComponentBase
+
+
+
+<RadzenToggleButton 
+    ToggleIcon="light_mode" 
+    Icon="dark_mode" 
+    Value="IsDarkMode" 
+    Change="(() => ThemeService.ToggleDarkMode(NavigationManager))" 
+    ToggleButtonStyle="ButtonStyle.Light" 
+    ButtonStyle="ButtonStyle.Dark" />

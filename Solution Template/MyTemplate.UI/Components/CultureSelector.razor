@@ -1,13 +1,11 @@
 ﻿@using Microsoft.Extensions.Options
 @using MyTemplate.UI.Options
-@inject NavigationManager NavigationManager
+@using MyTemplate.UI.tmp
 @inject IOptions<SupportedCulturesOptions> SupportedCulturesOptions
+@attribute [RenderModeInteractiveServer]
 
 @inherits ComponentBase
 
-<MudSelect Class="ma-2" Variant="Variant.Filled" Label="@Localizer["Language"]" AnchorOrigin="Origin.BottomCenter" @bind-Value="_selectedCulture" @bind-Value:after="@RequestCultureChange" ToStringFunc="SupportedCultureToString" T="SupportedCulture">
-    @foreach (var supportedCulture in _cultures)
-    {
-        <MudSelectItem Value="supportedCulture">@supportedCulture.Display</MudSelectItem>
-    }
-</MudSelect>
+
+<RadzenDropDown TValue="SupportedCulture"  TextProperty="Display"  Data="_cultures" Value="_selectedCulture" Change="RequestCultureChange" Name="@Localize["Language"]"></RadzenDropDown>
+   

@@ -5,8 +5,6 @@ using MyTemplate.Core;
 using MyTemplate.Data;
 using MyTemplate.UI;
 using Serilog;
-using Serilog.Core;
-using Log = Microsoft.VisualBasic.Logging.Log;
 
 namespace MyTemplate.Desktop;
 
@@ -18,7 +16,7 @@ internal static class Program
     [STAThread]
     private static void Main()
     {
-        AppDomain.CurrentDomain.UnhandledException += (sender, error) => { MessageBox.Show(error.ExceptionObject.ToString(), "Error"); };
+        AppDomain.CurrentDomain.UnhandledException += (_, error) => { MessageBox.Show(error.ExceptionObject.ToString(), @"Error"); };
         System.Windows.Forms.Application.SetHighDpiMode(HighDpiMode.SystemAware);
         System.Windows.Forms.Application.EnableVisualStyles();
         System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
@@ -38,7 +36,7 @@ internal static class Program
                 //Own configs
                 services.ConfigureDesktopApplication(context.Configuration);
                 services.ConfigureCommon(context.Configuration);
-                services.ConfigureUserInferface(context.Configuration);
+                services.ConfigureUserInterface(context.Configuration);
                 services.ConfigureCoreApplication(context.Configuration);
                 services.ConfigureData(context.Configuration);
                 services.AddTransient<Application>();

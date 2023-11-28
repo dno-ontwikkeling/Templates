@@ -1,4 +1,5 @@
-﻿using MyTemplate.UI.Options;
+﻿using Microsoft.AspNetCore.Components;
+using MyTemplate.UI.Options;
 
 namespace MyTemplate.UI.Components;
 
@@ -12,11 +13,11 @@ public partial class CultureSelector
     {
         var cultureInfo = Thread.CurrentThread.CurrentCulture;
         _cultures = SupportedCulturesOptions.Value.SupportedCultures;
-        var clientCulture = _cultures.FirstOrDefault(x => x.Culture == cultureInfo.Name);
+        var clientCulture = _cultures.Find(x => x.Culture == cultureInfo.Name);
         if (clientCulture is null)
         {
-            _selectedCulture = SupportedCulturesOptions.Value.SupportedCultures.First();
-            RequestCultureChange();
+            _selectedCulture = SupportedCulturesOptions.Value.SupportedCultures[0];
+            RequestCultureChange(_selectedCulture);
         }
         else
         {
@@ -27,15 +28,15 @@ public partial class CultureSelector
         return base.OnInitializedAsync();
     }
 
-    private void RequestCultureChange()
+    private void RequestCultureChange(object culture)
     {
-        var uri = new Uri(NavigationManager.Uri).GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
-        var query = $"?culture={Uri.EscapeDataString(_selectedCulture.Culture)}&redirectUri={Uri.EscapeDataString(uri)}";
-        NavigationManager.NavigateTo("/Culture/SetCulture" + query, true);
-    }
+        var supportedCulture = culture as SupportedCulture;
 
-    private string SupportedCultureToString(SupportedCulture? supportedCulture)
-    {
-        return supportedCulture is null ? string.Empty : supportedCulture.Display;
+        var uri = new Uri(NavigationManager.Uri).GetComponents(UriComponents.PathAndQuery, UriFormat.Unescaped);
+        if (supportedCulture != null)
+        {
+            var query = $"?culture={Uri.EscapeDataString(supportedCulture.Culture)}&redirectUri={Uri.EscapeDataString(uri)}";
+            NavigationManager.NavigateTo("/Culture/SetCulture" + query, true);
+        }
     }
 }

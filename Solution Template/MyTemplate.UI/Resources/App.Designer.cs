@@ -61,6 +61,15 @@ namespace MyTemplate.UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dashboard.
+        /// </summary>
+        public static string Dashboard {
+            get {
+                return ResourceManager.GetString("Dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello.
         /// </summary>
         public static string Hello {
@@ -75,6 +84,15 @@ namespace MyTemplate.UI.Resources {
         public static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to test.
+        /// </summary>
+        public static string test {
+            get {
+                return ResourceManager.GetString("test", resourceCulture);
             }
         }
     }

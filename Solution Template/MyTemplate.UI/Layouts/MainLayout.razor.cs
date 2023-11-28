@@ -1,5 +1,6 @@
 ﻿namespace MyTemplate.UI.Layouts;
 
-public class MainLayout_razor
+public partial class MainLayout
 {
+    private bool _sidebarExpanded;
 }

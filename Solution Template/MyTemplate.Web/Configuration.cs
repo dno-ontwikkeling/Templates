@@ -8,13 +8,13 @@ namespace MyTemplate.Web;
 
 public static class Configuration
 {
-    public static IServiceCollection ConfigureBlazorServerSideWebApp(this IServiceCollection services,
+    public static IServiceCollection ConfigureBlazorWebApp(this IServiceCollection services,
         IConfiguration config)
     {
         services.AddMediator(options =>
         {
             options.ConfigureMediatorForCommonLibrary();
-            options.ConfigureMediatorForUILibrary();
+            options.ConfigureMediatorForUiLibrary();
             options.ConfigureMediatorForCoreLibrary();
             options.ConfigureMediatorForDataLibrary();
         });

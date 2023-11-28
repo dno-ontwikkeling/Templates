@@ -1,9 +1,6 @@
 ﻿namespace MyTemplate.Common.Mediator;
 
-public interface IDataRequest<TResponse>
-{
-}
 
-public interface ICommandRequest
-{
-}
+public interface IDataRequest<TResponse>;
+
+public interface ICommandRequest;

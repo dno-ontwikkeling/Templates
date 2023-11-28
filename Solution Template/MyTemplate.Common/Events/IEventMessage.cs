@@ -1,5 +1,3 @@
 ﻿namespace MyTemplate.Common.Events;
 
-public interface IEventMessage
-{
-}
+public interface IEventMessage;
