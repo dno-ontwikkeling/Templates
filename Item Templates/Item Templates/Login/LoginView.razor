@@ -1,0 +1,55 @@
+﻿@inherits ComponentBase
+
+<div class="@(_singUpView ? "login-container right-panel-active": "login-container")" id="container">
+    <div class="form-container sign-up-container">
+        <RadzenTemplateForm TItem="RegisterModel" Data="_registerModel" Submit="Register" class="input-form">
+            <FluentValidationValidator/>
+            <RadzenText TextStyle="TextStyle.H1" class="header-text">Create Account</RadzenText>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fa fa-github"></i></a>
+                <a href="#" class="social"><i class="fab fa-windows"></i></a>
+            </div>
+            <span>or use your email for registration</span>
+            <RadzenTextBox class="input-field" type="text" Placeholder="Name"/>
+            <ValidationMessage For="() => _registerModel.Name"></ValidationMessage>
+            <RadzenTextBox class="input-field" type="email" Placeholder="Email"/>
+            <ValidationMessage For="() => _registerModel.Email"></ValidationMessage>
+            <RadzenTextBox class="input-field" type="password" Placeholder="Password"/>
+            <ValidationMessage For="() => _registerModel.Password"></ValidationMessage>
+            <RadzenButton class="button-style" ButtonType="ButtonType.Submit" Style="margin-top: 15px;" ButtonStyle="ButtonStyle.Primary" Variant="Variant.Filled">Sign Up</RadzenButton>
+        </RadzenTemplateForm>
+    </div>
+    <div class="form-container sign-in-container">
+        <RadzenTemplateForm TItem="LoginModel" Data="_loginModel" Submit="Login" class="input-form">
+            <FluentValidationValidator/>
+            <RadzenText TextStyle="TextStyle.H1" class="header-text">Sign in</RadzenText>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fa fa-github"></i></a>
+                <a href="#" class="social"><i class="fab fa-windows"></i></a>
+            </div>
+            <span class="mb-2">or use your account</span>
+            <RadzenTextBox class="input-field" type="email" Placeholder="Email"/>
+            <ValidationMessage For="() => _loginModel.Email"></ValidationMessage>
+            <RadzenTextBox class="input-field" type="password" Placeholder="Password"/>
+            <ValidationMessage For="() => _loginModel.Password"></ValidationMessage>
+            <a href="#">Forgot your password?</a>
+            <RadzenButton class="button-style" ButtonType="ButtonType.Submit" ButtonStyle="ButtonStyle.Primary" Variant="Variant.Filled">Sign In</RadzenButton>
+        </RadzenTemplateForm>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <RadzenText Style="color: var(--rz-white)" TextStyle="TextStyle.H2" class="header-text">Welcome Back!</RadzenText>
+                <p>To keep connected with us please log in with your personal info or create a new account</p>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Outlined" Click="ToggleView" class="ghost button-style" id="signUp">Sign Up</RadzenButton>
+
+            </div>
+            <div class="overlay-panel  overlay-left">
+                <RadzenText Style="color: var(--rz-white)" TextStyle="TextStyle.H2" class="header-text">Hello, Friend!</RadzenText>
+                <p>Enter your personal details and start journey with us or login with your existing account</p>
+                <RadzenButton ButtonStyle="ButtonStyle.Light" Variant="Variant.Outlined" Click="ToggleView" class="ghost button-style" id="signIn">Sign In</RadzenButton>
+            </div>
+        </div>
+    </div>
+</div>
+

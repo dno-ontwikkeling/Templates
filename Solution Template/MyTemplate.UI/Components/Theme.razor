@@ -5,27 +5,4 @@
 @inject ILocalStorageService LocalStorageService
 
 
-
 <link href="@($"./_content/MyTemplate.UI/css/Radzen/{ThemeService.CurrentTheme.Value}-base.css")" rel="stylesheet" />
-
-
-@code {
-
-    // protected override async Task OnInitializedAsync()
-    // {
-       
-    //     await base.OnInitializedAsync();
-    // }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await ThemeService.Initialize(NavigationManager);
-            await base.OnAfterRenderAsync(firstRender);
-            await InvokeAsync(StateHasChanged);
-        }
-       
-    }
-
-}

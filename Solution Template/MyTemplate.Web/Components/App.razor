@@ -10,13 +10,14 @@
         <link href="_content/MyTemplate.UI/css/site.css" rel="stylesheet" />
         <link href="_content/MyTemplate.UI/MyTemplate.UI.bundle.scp.css" rel="stylesheet" />
         <link href="_content/MyTemplate.UI/favicon.png" rel="icon" type="image/png"/>
-        <HeadOutlet />
+    <HeadOutlet @rendermode="InteractiveServer" />
     </head>
 
     <body>
         <Routes @rendermode="new InteractiveServerRenderMode(prerender: false)" />
         <script src="_framework/blazor.web.js"></script>
         <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
+        <script src="https://kit.fontawesome.com/0fd29ff397.js" crossorigin="anonymous"></script>
     </body>
 
 </html>

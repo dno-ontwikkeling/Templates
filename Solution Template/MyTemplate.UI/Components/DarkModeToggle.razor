@@ -1,6 +1,6 @@
-﻿@using MyTemplate.UI.tmp
-@using Radzen.Blazor
+﻿@using Radzen.Blazor
 @using MyTemplate.UI.Services
+@using MyTemplate.UI.tmp
 @attribute [RenderModeInteractiveServer]
 
 @inject ThemeService ThemeService
@@ -11,7 +11,7 @@
 <RadzenToggleButton 
     ToggleIcon="light_mode" 
     Icon="dark_mode" 
-    Value="IsDarkMode" 
+    Value="_isDarkMode" 
     Change="(() => ThemeService.ToggleDarkMode(NavigationManager))" 
     ToggleButtonStyle="ButtonStyle.Light" 
     ButtonStyle="ButtonStyle.Dark" />

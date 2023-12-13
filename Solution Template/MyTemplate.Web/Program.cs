@@ -1,5 +1,3 @@
-
-
 using Microsoft.Extensions.FileProviders;
 using MyTemplate.Common;
 using MyTemplate.Core;
@@ -20,6 +18,7 @@ builder.Host.UseSerilog((hostBuilderContext, loggerConfiguration) => { loggerCon
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddControllers();
+builder.Services.AddHealthChecks();
 
 //Own configs
 builder.Services.ConfigureCommon(builder.Configuration);
@@ -30,6 +29,8 @@ builder.Services.ConfigureData(builder.Configuration);
 
 
 var app = builder.Build();
+
+app.MapHealthChecks("/status");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -42,11 +43,15 @@ app.UseSerilogRequestLogging();
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
-app.UseStaticFiles(new StaticFileOptions()
+
+if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "../MyTemplate.UI/StaticFiles")))
 {
-    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "../MyTemplate.UI/Images")),
-    RequestPath = new PathString("/Images")
-});
+    app.UseStaticFiles(new StaticFileOptions()
+    {
+        FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "../MyTemplate.UI/StaticFiles")),
+        RequestPath = new PathString("/static-files")
+    });
+}
 
 Configuration.UseConfiguredRequestLocalization(app, builder.Configuration);
 
@@ -55,5 +60,5 @@ app.MapControllers();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
-    .AddAdditionalAssemblies(typeof(MainLayout).Assembly);
+    .AddAdditionalAssemblies(typeof(MainLayout).Assembly);  
 app.Run();

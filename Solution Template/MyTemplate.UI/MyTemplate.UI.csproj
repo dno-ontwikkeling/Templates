@@ -52,7 +52,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Images\" />
+    <Folder Include="StaticFiles\" />
   </ItemGroup>
 
 </Project>

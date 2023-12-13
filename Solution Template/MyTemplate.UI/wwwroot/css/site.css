@@ -2,3 +2,9 @@
 body {
     color: var(--rz-text-color)
 }
+
+
+.validation-message {
+    font-size: 11px;
+    color: var(--rz-danger);
+}
